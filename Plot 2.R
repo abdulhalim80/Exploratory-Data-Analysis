@@ -1,0 +1,11 @@
+library(dplyr)
+srcfile <- read.table("household_power_consumption.txt", sep=";", header=TRUE)
+df_srcfile <- tbl_df(srcfile)
+dataToUse <- subset(df_srcfile,df_srcfile$Date=="1/2/2007" | df_srcfile$Date=="2/2/2007")
+col_global_active_power <- dataToUse$Global_active_power
+use_global_active_power <- as.numeric(as.character(col_global_active_power))
+png("plot2.png",width=480,height=480)
+get_datetime = paste(dataToUse$Date, dataToUse$Time, sep=" ")
+x_datetime <- strptime(get_datetime,"%d/%m/%Y %H:%M:%S")
+plot(x_datetime,use_global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
+dev.off()
