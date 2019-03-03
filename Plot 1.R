@@ -1,5 +1,5 @@
 library(dplyr)
-srcfile <- read.table("D:\\A1881\\Documents\\GitHub\\coursera\\Data Science Basic\\Week 1 - Assignment\\household_power_consumption.txt", sep=";", header=TRUE)
+srcfile <- read.table("household_power_consumption.txt", sep=";", header=TRUE)
 df_srcfile <- tbl_df(srcfile)
 dataToUse <- subset(df_srcfile,df_srcfile$Date=="1/2/2007" | df_srcfile$Date=="2/2/2007")
 col_global_active_power <- dataToUse$Global_active_power
